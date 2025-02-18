@@ -86,7 +86,7 @@ function composeContainer() {
     hide();
     homePage.handleAsRedirect('/TeleFlix');
   });
-  button.textContent = 'Get started with Telegram Calls';
+  button.textContent = 'Get started with TeleFlix';
   button.appendChild(buttonIcon);
   const textContainer = document.createElement('div');
   textContainer.classList.add('text-container');
