@@ -679,7 +679,7 @@ function composeTeamMembers() {
       const memberButtons = document.createElement('div');
       memberButtons.classList.add('buttons');
       memberButtons.appendChild(telegramButton);
-      memberButtons.appendChild(githubButton);
+      memberButtons.appendChild(InstaButton);
 
       const memberContainer = document.createElement('div');
       memberContainer.classList.add('member');
