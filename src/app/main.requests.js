@@ -30,7 +30,7 @@ let pypiDataResult;
 
 let alternativesList = {};
 
-export async function initRequest(fileName, repoName = 'pytgcalls/docsdata') {
+export async function initRequest(fileName, repoName = 'TryToLiveAlon/docsdata') {
   const isUsingAnAlternative = !!alternativesList[repoName];
 
   if (!isUsingAnAlternative) {
