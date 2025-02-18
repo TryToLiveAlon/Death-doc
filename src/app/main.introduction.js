@@ -74,7 +74,7 @@ function composeContainer() {
 
   const bigTitle = document.createElement('div');
   bigTitle.classList.add('bigtitle');
-  bigTitle.innerHTML = 'A simplified implementation of<br/>Telegram Calls in a<br/>seamless way';
+  bigTitle.innerHTML = 'A simplified implementation of<br/>My Project and Telegram Bots<br/>in a seamless way';
   const buttonIcon = document.createElement('div');
   buttonIcon.classList.add('button-icon');
   buttonIcon.appendChild(document.createElement('div'));
@@ -84,7 +84,7 @@ function composeContainer() {
   button.classList.add('mgc-button');
   button.addEventListener('click', () => {
     hide();
-    homePage.handleAsRedirect('/NTgCalls');
+    homePage.handleAsRedirect('/TeleFlix');
   });
   button.textContent = 'Get started with Telegram Calls';
   button.appendChild(buttonIcon);
@@ -616,6 +616,7 @@ function composeTeamMembers() {
       && x.querySelector('role') && x.querySelector('role').textContent.trim()
       && x.querySelector('github-username') && x.querySelector('github-username').textContent.trim()
       && x.querySelector('telegram-username') && x.querySelector('telegram-username').textContent.trim()
+      && x.querySelector('instagram-username') && x.querySelector('instagram-username').textContent.trim()
     )).length;
 
     const minimumDiv = parseInt(validChildrenCount / 2);
@@ -625,6 +626,7 @@ function composeTeamMembers() {
       const role = member.querySelector('role');
       const github = member.querySelector('github-username');
       const telegram = member.querySelector('telegram-username');
+      const instagram = member.querySelector('instagram-username');
 
       if (!name || !name.textContent.trim() || !role || !role.textContent.trim()) {
         continue;
@@ -668,11 +670,11 @@ function composeTeamMembers() {
       telegramButton.appendChild(iconsManager.get('socials', 'telegram'));
       telegramButton.appendChild(document.createTextNode('Telegram'));
 
-      const githubButton = document.createElement('a');
-      githubButton.href = 'https://github.com/' + github.textContent.trim();
-      githubButton.target = '_blank';
-      githubButton.appendChild(iconsManager.get('socials', 'github'));
-      githubButton.appendChild(document.createTextNode('Github'));
+      const InstaButton = document.createElement('a');
+      InstaButton.href = 'https://instagram.com/' + instagram.textContent.trim();
+      InstaButton.target = '_blank';
+      InstaButton.appendChild(iconsManager.get('socials', 'instagram'));
+      InstaButton.appendChild(document.createTextNode('instagram'));
 
       const memberButtons = document.createElement('div');
       memberButtons.classList.add('buttons');
