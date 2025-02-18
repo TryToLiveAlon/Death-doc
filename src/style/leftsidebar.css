@@ -1,0 +1,206 @@
+body .page-container .left-container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #0d1117;
+}
+
+body.as-home .page-container .left-container {
+  display: none;
+}
+
+@media screen and (max-width: 1330px) {
+  body .page-container .left-container {
+    position: absolute;
+    transform: translateX(-100%);
+    width: 100%;
+    pointer-events: none;
+    z-index: 4;
+    background: #080a0e;
+    transition: 0.2s transform cubic-bezier(0.97, -0.02, 0, 0.98);
+  }
+
+  body .page-container .left-container.show {
+    pointer-events: all;
+    transform: translateX(0);
+  }
+}
+
+@media screen and (min-width: 1330px) {
+  body .page-container .left-container {
+    border-right: 1px solid rgba(93, 106, 129, 0.2);
+    width: calc(23vw + 10px);
+  }
+}
+
+body .page-container .left-container .left-sidebar {
+  flex: 1;
+  border-radius: 10px;
+  width: 100%;
+  position: relative;
+  padding: 5px 15px 15px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+body .page-container .left-container .left-sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+body .page-container .left-container .left-sidebar:not(.expanded) {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+@supports (overflow-y: overlay) {
+  body .page-container .left-container .left-sidebar {
+    overflow-y: overlay;
+  }
+}
+
+body .page-container .left-container .left-sidebar .microtag {
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  transition: 0.2s filter;
+}
+
+body .page-container .left-container .left-sidebar .microtag:not(:first-child) {
+  margin-top: 25px;
+}
+
+body .page-container .left-container .left-sidebar .collapsed:first-child+.microtag {
+  margin-top: 0;
+}
+
+body .page-container .left-container .left-sidebar .elements {
+  max-height: 37px;
+  overflow: hidden;
+  transition: 0.2s max-height;
+}
+
+body .page-container .left-container .left-sidebar .elements.expanded {
+  max-height: calc(37px * var(--items));
+}
+
+body .page-container .left-container .left-sidebar .elements .element:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+body .page-container .left-container .left-sidebar .elements .element:first-child .icon-container {
+  transform: translateX(-20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s transform;
+}
+
+body .page-container .left-container .left-sidebar .elements .element:first-child .icon-container svg {
+  fill: #5d6a81;
+}
+
+body .page-container .left-container .left-sidebar .elements.expanded .element:first-child .icon-container {
+  transform: rotate(180deg) translateX(20px);
+}
+
+body .page-container .left-container .left-sidebar .elements .element:not(:first-child) {
+  margin-left: 30px;
+}
+
+body .page-container .left-container .left-sidebar .element {
+  color: #FFFFFF;
+  padding: 6px 6px 6px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s background, 0.2s transform, 0.2s filter;
+}
+
+body .page-container .left-container .left-sidebar .element.active {
+  background: rgb(22, 26, 32);
+  pointer-events: none;
+}
+
+body .page-container .left-container .left-sidebar .elements:not(.expanded):has(.active:not(:first-child)) .element:first-child {
+  background: rgb(255, 255, 255, 0.15);
+}
+
+body .page-container .left-container .left-sidebar .element:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body .page-container .left-container .left-sidebar .element:active {
+  background: rgba(255, 255, 255, 0.08);
+  transform: scale(0.95);
+}
+
+body .page-container .left-container .left-sidebar.faster {
+  --animation-delay: 0.01s;
+  --animation-timing: 0.15s;
+}
+
+body .page-container .left-container .left-sidebar:not(.disappear) .element,
+body .page-container .left-container .left-sidebar:not(.disappear) .microtag {
+  transform: translateX(-10%);
+  opacity: 0;
+  animation: var(--animation-timing, 0.2s) appearElement forwards calc(var(--id) * var(--animation-delay, 0.03s));
+}
+
+@keyframes appearElement {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+body .page-container .left-container .left-sidebar.disappear .element,
+body .page-container .left-container .left-sidebar.disappear .microtag {
+  transform: translateX(0);
+  animation: var(--animation-timing, 0.2s) disappearElement forwards calc(var(--id) * var(--animation-delay, 0.03s));
+}
+
+@keyframes disappearElement {
+  to {
+    opacity: 0;
+    transform: translateX(10%);
+  }
+}
+
+body .page-container .left-container .left-sidebar:has(.library-container .library.focused-tooltip) .microtag,
+body .page-container .left-container .left-sidebar:has(.library-container .library.focused-tooltip) .element {
+  filter: opacity(0.3);
+}
+
+body .page-container .left-container .left-sidebar .library-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  transition: 0.2s opacity;
+}
+
+@media screen and (min-width: 1000px) {
+  body .page-container .left-container .left-sidebar .library-container {
+    display: none;
+  }
+}
+
+body .page-container .left-container .left-sidebar .library-container .library {
+  background: rgb(22, 26, 32);
+  padding-inline: 10px;
+  padding-block: 5px;
+  border-radius: 10px;
+}
+
+body .page-container .left-container .left-sidebar.disappear .library-container {
+  opacity: 0;
+}

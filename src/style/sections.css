@@ -1,0 +1,110 @@
+body .page-container .sections {
+  width: 20vw;
+  height: 100%;
+}
+
+body.as-home .page-container .sections {
+  display: none;
+}
+
+@media screen and (max-width: 1330px) {
+  body .page-container .sections {
+    position: absolute;
+    bottom: 0;
+    transform: translateX(100%);
+    width: 100%;
+    padding-inline: 20px;
+    pointer-events: none;
+    background: #080a0e;
+    z-index: 4;
+    transition: 0.2s transform cubic-bezier(0.97, -0.02, 0, 0.98);
+  }
+
+  body .page-container .sections.show {
+    pointer-events: all;
+    transform: translateX(0);
+  }
+}
+
+body .page-container .sections.is-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body .page-container .sections.is-loading svg {
+  animation: 0.9s rotateSvg linear infinite;
+}
+
+body .page-container .sections.is-loading svg circle {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-dasharray: 10, 10;
+  opacity: 0;
+  animation: 2s animateStroke linear infinite, 0.2s appearSvg 0.2s forwards;
+}
+
+body .page-container .sections:not(.is-loading) {
+  padding: 25px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+body .page-container .sections:not(.is-loading) *:not(.sections-recap) {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 4px;
+  transition: 0.2s color;
+}
+
+body .page-container .sections:not(.is-loading) .sections-recap {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+}
+
+@supports (overflow-y: overlay) {
+  body .page-container .sections:not(.is-loading) .sections-recap {
+    overflow-y: overlay;
+  }
+}
+
+body .page-container .sections:not(.is-loading) .sections-recap *:hover {
+  color: #FFFFFF;
+}
+
+body .page-container .sections:not(.is-loading) .sections-recap:has(*:hover) *:not(:hover) {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+body .page-container .sections:not(.is-loading) .h1 {
+  font-size: 20px;
+}
+
+body .page-container .sections:not(.is-loading) .h1,
+body .page-container .sections:not(.is-loading) .h2,
+body .page-container .sections:not(.is-loading) .h3,
+body .page-container .sections:not(.is-loading) .pg-title,
+body .page-container .sections:not(.is-loading) .category-title {
+  white-space: nowrap;
+  max-width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body .page-container .sections:not(.is-loading) .category-title {
+  margin-left: 10px;
+}
+
+body .page-container .sections:not(.is-loading) .category-title+.subtext .pg-title,
+body .page-container .sections:not(.is-loading) .category-title+.subtext .h3 {
+  margin-left: 10px;
+}
+
+body .page-container .sections:not(.is-loading) .subtext {
+  margin-left: 10px;
+}
