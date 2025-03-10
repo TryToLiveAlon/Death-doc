@@ -741,7 +741,7 @@ function composeFooter() {
 
   const dedSectionTitle = document.createElement('div');
   dedSectionTitle.classList.add('title');
-  dedSectionTitle.textContent = 'PyTgCalls Foundation';
+  dedSectionTitle.textContent = 'TryToLiveAlon Community Foundation';
   const dedSectionDescription = document.createElement('div');
   dedSectionDescription.classList.add('description');
   dedSectionDescription.textContent = 'Help us make these docs great!';
